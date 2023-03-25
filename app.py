@@ -19,13 +19,12 @@ def get_gpt_response():
         captions = ExternalAPIs.getCaptions(url)
         # get the response
         prompt, captions = get_prompt(search_text, captions)
-        response = ExternalAPIs.getGPT(prompt)
+        responses = []
+        responses.append(ExternalAPIs.getGPT(prompt))
         while prompt != '':
             prompt, captions = get_prompt(search_text, captions)
-            if 'I do not know the answer based on the video.' in response:
-                pass
-            else:
-                response += ' ' + ExternalAPIs.getGPT(prompt)
+            responses.append(' ' + ExternalAPIs.getGPT(prompt))
+        response = max(responses, key=len)
         return jsonify(message=response)
 
 
@@ -38,7 +37,7 @@ def get_prompt(search_text, captions):
         else:
             question = 'Here is a question that I want you to answer: '
             question += search_text + '. '
-            context = 'Here are the captions for you to use to answer the question, answer in a concise manner, if you cannot get any answer say "I do not know the answer based on the video.": ' + captions_clip
+            context = 'Here are the captions for you to use to answer the question, answer in a concise manner: ' + captions_clip
 
         prompt = question + context
 
