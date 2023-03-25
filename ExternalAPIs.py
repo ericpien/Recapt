@@ -21,15 +21,15 @@ class ExternalAPIs():
         messages = [
             {"role": "system", "content": "You are a helpful assistant."},
         ]
-        while True:
-            messages.append(
-                {"role": "user", "content": prompt},
-            )
-            chat_completion = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=messages
-            )
-            answer = chat_completion.choices[0].message.content
-            print(f"ChatGPT: {answer}")
-            messages.append({"role": "assistant", "content": answer})
-            return answer
+
+        messages.append(
+            {"role": "user", "content": prompt},
+        )
+        chat_completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages
+        )
+        answer = chat_completion.choices[0].message.content
+        print(f"ChatGPT: {answer}")
+        messages.append({"role": "assistant", "content": answer})
+        return answer
