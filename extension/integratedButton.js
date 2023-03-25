@@ -17,6 +17,7 @@ const ENV_VAR = {
 
 var resultArea = null;
 var resultText = null;
+var inputTextForm = null;
 
 // icon in svg format
 const icon = '<svg x="0px" y="0px" width="80%" height="80%" viewBox="0 0 40 40" version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"xml:space="preserve"> <style type="text/css"> .flatshadows_een{fill:#FDFFFF;} .flatshadows_twee{fill:#E1E5E5;} .flatshadows_drie{fill:#C4CCCC;} .flatshadows_vijf{fill:#8D9999;} .st0{fill:#A3AFAF;} .st1{fill:#C4CCCC;} .st2{fill:#404041;} .st3{fill:#737F7F;} </style> <g> <polygon class="flatshadows_twee" points="32,20 23,20 19,24 15,20 6,20 6,2 32,2 	"/> <polygon class="flatshadows_een" points="26,26 17,26 13,30 9,26 0,26 0,8 26,8 	"/> <polygon class="flatshadows_drie" points="26,8 32,14 32,20 26,20 	"/> <rect x="9" y="14" class="flatshadows_vijf" width="8" height="1"/> <rect x="9" y="16" class="flatshadows_vijf" width="8" height="1"/> <rect x="9" y="18" class="flatshadows_vijf" width="8" height="1"/> </g> </svg>'
@@ -130,9 +131,17 @@ class YouTubeGPTButton {
         
         resultArea = document.querySelector(".resultArea");
         resultText = document.querySelector(".resultText");
+        inputTextForm = document.querySelector(".formData");
 
         document.getElementById("searchButton").addEventListener("click", search);
-        document.getElementById("summarize").addEventListener("click", summarize);        
+        document.getElementById("summarize").addEventListener("click", summarize); 
+        
+        // reset the result panel and text if the youtube video is changed
+        window.addEventListener('yt-page-data-updated', function () {
+            resultText.textContent = "";
+            resultArea.style.display = "none";
+            inputTextForm.reset();
+        });
     }
 }
 
