@@ -1,11 +1,6 @@
 import openai
 import os
 from youtube_transcript_api import YouTubeTranscriptApi
-import numpy as np
-import pandas as pd
-import pickle
-import tiktoken
-
 
 
 class ExternalAPIs():
