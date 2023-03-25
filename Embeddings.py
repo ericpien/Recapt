@@ -7,7 +7,21 @@ import os
 
 EMBEDDING_MODEL = "text-embedding-ada-002"
 
+
 class Embeddings():
+
+    def create_df(captions):
+        df = pd.DataFrame()
+        start = 0
+        end = 500
+        rows = []
+        while captions_clip != '':
+            captions_clip = captions[start:end]
+            rows.append(captions_clip)
+            start = end
+            end += 500
+        df['Text'] = rows
+        return df
 
     def get_embedding(text, model):
         result = openai.Embedding.create(
@@ -18,6 +32,5 @@ class Embeddings():
 
     def compute_doc_embeddings(df):
         return {
-            idx: get_embedding(r.content) for idx, r in df.iterrows()
+            idx: Embeddings.get_embedding(r.content) for idx, r in df.iterrows()
         }
-    
