@@ -18,22 +18,33 @@ def get_gpt_response():
         # get the captions
         captions = ExternalAPIs.getCaptions(url)
         # get the response
-        prompt = get_prompt(search_text, captions)
+        prompt, captions = get_prompt(search_text, captions)
         response = ExternalAPIs.getGPT(prompt)
+        while prompt != '':
+            prompt, captions = get_prompt(search_text, captions)
+            if 'I do not know the answer based on the video.' in response:
+                pass
+            else:
+                response += ' ' + ExternalAPIs.getGPT(prompt)
         return jsonify(message=response)
 
 
 def get_prompt(search_text, captions):
-    if search_text == 'summarize':
-        question = 'Summarize the following captions from a Youtube video: '
-        context = captions
-    else:
-        question = 'Here is a question that I want you to answer: '
-        question += search_text + '. '
-        context = 'Here are the captions for you to use to answer the question, answer in a concise manner: ' + captions
+    if captions != '':
+        captions_clip = captions[0:9500]
+        if search_text == 'summarize':
+            question = 'Summarize the following captions from a Youtube video: '
+            context = captions_clip
+        else:
+            question = 'Here is a question that I want you to answer: '
+            question += search_text + '. '
+            context = 'Here are the captions for you to use to answer the question, answer in a concise manner, if you cannot get any answer say "I do not know the answer based on the video.": ' + captions_clip
 
-    prompt = question + context
-    return prompt
+        prompt = question + context
+
+        return prompt, captions[9500:]
+    else:
+        return '', ''
 
 
 if __name__ == '__main__':
