@@ -1,5 +1,6 @@
 # backend
 from flask import Flask, request, jsonify
+from ExternalAPIs import ExternalAPIs
 app = Flask(__name__)
 
 
@@ -15,10 +16,10 @@ def get_gpt_response():
         if search_text == '':
             return jsonify(status="error", message="You must provide a question to get a response.")
         # get the captions
-        captions = ''
+        captions = ExternalAPIs.getCaptions(url)
         # get the response
         prompt = get_prompt(search_text, captions)
-        response =''
+        response = ExternalAPIs.getGPT(prompt)
         return jsonify(message=response)
 
 
@@ -29,7 +30,7 @@ def get_prompt(search_text, captions):
     else:
         question = 'Here is a question that I want you to answer: '
         question += search_text + '. '
-        context = 'Here are the captions for you to use to answer the question, if you are not sure of the answer using these captions say "Sorry, I do not know.": ' + captions
+        context = 'Here are the captions for you to use to answer the question, answer in a concise manner: ' + captions
 
     prompt = question + context
     return prompt
