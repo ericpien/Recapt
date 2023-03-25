@@ -1,8 +1,9 @@
-## recapt
-# BCS-Hackathon-2023
+# recapt
+## BCS-Hackathon-2023
 
 
-**recapt** is a cutting-edge Chrome extension designed to enhance users' YouTube experience by providing concise summaries and intelligent answers to their questions about the video they are watching. By leveraging advanced AI and OpenAI API endpoints, this extension offers unparalleled convenience and efficiency in a sleek, seamless user interface.
+**Overview**
+recapt is a cutting-edge Chrome extension designed to enhance users' YouTube experience by providing concise summaries and intelligent answers to their questions about the video they are watching. By leveraging advanced AI and OpenAI API endpoints, this extension offers unparalleled convenience and efficiency in a sleek, seamless user interface.
 
 Built with a full-stack approach and a complex backend prompt algorithm, this high-tech extension is perfect for users who want quick, accurate insights without having to watch an entire video.
 
