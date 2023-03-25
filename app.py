@@ -23,7 +23,7 @@ def get_gpt_response():
             return jsonify(message=captions)
 
         if len(captions.split(' ')) <= 5000:
-            sum1 = 'Here is a summary you previously gave me. Rewrite this in better English for a video description, immediately act as if you were writing a video description as the content creator. Max word count is 400 words.'
+            sum1 = 'Here is a summary you previously gave me. Rewrite this in better English for a video description, immediately act as if you were writing a video description as the content creator. Use "we" pronouns. Max word count is 400 words.'
             sum2 = 'Summarize the following captions from a Youtube video as if you were the content creator: '
         else:
             sum1 = 'Summarize: '
@@ -55,7 +55,7 @@ def get_prompt(search_text, captions, sum2):
         else:
             question = 'Here is a question that I want you to answer: '
             question += search_text + '. '
-            context = 'Here are the captions for you to use to answer the question, answer immediately and as if you were answering this question about your own video ' + captions_clip
+            context = 'Here are the captions for you to use to answer the question, answer immediately and as if you were answering this question about your own video. Use we pronouns. ' + captions_clip
 
         prompt = question + context
 
