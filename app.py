@@ -22,9 +22,10 @@ def get_gpt_response():
 
 def get_prompt(search_text, captions):
     if search_text == 'summarize':
-        question = 'Summarize the following captions from a Youtube video: '
+        question = 'Summarize the following captions from a Youtube video.'
     else:
-        questions = 'Here is a question that I want you to answer '
+        question = 'Here is a question that I want you to answer: '
+        question += search_text
 
 
 if __name__ == '__main__':
