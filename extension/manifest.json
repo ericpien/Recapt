@@ -15,7 +15,7 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": ["main.js"],
+            "resources": ["main.js", "main.css"],
             "matches": ["<all_urls>"]
         }
     ]

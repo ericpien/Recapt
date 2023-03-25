@@ -11,15 +11,16 @@ function setURL() {
 }
 
 async function search() {
-    let activeTab = await getActiveTab();
-    let inputText = document.getElementById("input").value;
-    alert(activeTab.url + " " + inputText);
+    // let activeTab = await getActiveTab();
+    let inputText = document.getElementById("inputBox").value;
+    //alert(activeTab.url + " " + inputText);
+    alert(inputText);
 }
 
 async function summarize() {
-    console.log("hello I'm here");
-    let activeTab = await getActiveTab();
-    alert(activeTab.url + " " + "summarize");
+    // let activeTab = await getActiveTab();
+    // alert(activeTab.url + " " + "summarize");
+    alert("summarize");
 }
 
 function getActiveTab() {

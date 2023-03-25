@@ -2,8 +2,8 @@
 .popupBody {
     background-color: white;
     border: black;
-    height: 45px;
-    width: 77px;
+    height: 45%;
+    width: 77%;
     vertical-align: middle;
 }
 
@@ -22,11 +22,11 @@
 
 
 .inputBox {
-    padding: 15px;
-    font-size: 17px;
+    padding: 10px;
+    font-size: 150%;
     border: none;
     float: left;
-    width: 80%;
+    width: 60%;
     background: white;
 }
   
