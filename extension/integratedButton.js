@@ -137,13 +137,27 @@ class YouTubeGPTButton {
 }
 
 function search() {
+    document.getElementById("searchButton").disabled = true;
+    document.getElementById("summarize").disabled = true;
+    console.log("clicked search button");
+
+    resultArea.style.display = "block";
+    resultText.textContent = "Searching for an answer to your question...please wait...";
 
     let activeTab = document.URL;
     let inputText = document.getElementById("inputBox").value;
+
     processClick(activeTab,inputText);
 }
 
 function summarize() {
+    document.getElementById("searchButton").disabled = true;
+    document.getElementById("summarize").disabled = true;
+    console.log("clicked summarize button");
+
+    resultArea.style.display = "block";
+    resultText.textContent = "Summarizing the video...please wait...";
+
     let activeTab = document.URL;
     processClick(activeTab,"summarize");
 }
@@ -154,16 +168,19 @@ function processClick(url, request) {
     console.log(fetch_url);
     fetch(fetch_url)
         .then(response => {
-            //console.log(response)
             return response.json();
         }) 
         .then(json => {
             resultText.textContent = json.message;
-            resultArea.style.display = "block";
+            document.getElementById("searchButton").disabled = false;
+            document.getElementById("summarize").disabled = false;
         })
         .catch(error => {
             console.log(error);
+            document.getElementById("searchButton").disabled = false;
+            document.getElementById("summarize").disabled = false;
         });
+    
 }
 
 let youTubGPTButton = new YouTubeGPTButton()
