@@ -28,7 +28,7 @@ def get_gpt_response():
         if search_text == 'summarize':
             response = ' '.join(responses)
             prompt, captions = get_prompt(
-                'Here is a summary you previously gave me, can you resummarize this to be less repetitive?', response)
+                'Here is a summary you previously gave me. Can you rewrite this in better English? Max word count is 400 words.', response)
             response = ExternalAPIs.getGPT(prompt)
         else:
             response = max(responses, key=len)
