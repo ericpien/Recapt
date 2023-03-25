@@ -2,7 +2,7 @@ import openai,os,sys
 from youtube_transcript_api import YouTubeTranscriptApi
 import os
 
-class NotRequests(): 
+class ExternalAPIs(): 
 
         @staticmethod
         def getCaptions(url):
@@ -40,7 +40,3 @@ class NotRequests():
                         print(f"ChatGPT: {answer}")
                         messages.append({"role": "assistant", "content": answer})
                         return answer
-
-
-
-NotRequests.getGPT("hello")
