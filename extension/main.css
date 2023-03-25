@@ -1,17 +1,8 @@
-
-.popupBody {
-    background-color: white;
-    border: black;
-    height: 45%;
-    width: 77%;
-    vertical-align: middle;
-}
-
 .searchButton {
     background-color: white;
     border: #232539;
     color: rgb(0, 0, 0);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .searchButton:hover {

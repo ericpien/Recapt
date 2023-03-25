@@ -1,0 +1,56 @@
+@port = 8080
+@host = 206.87.124.19
+
+GET http://{{host}}:{{port}}/response
+    ?url=all&place=city1,country1&date=2023-01-30
+###
+
+POST http://{{host}}:{{port}}/park
+content-type: application/json
+
+{
+    "long": 2,
+    "lat": 2,
+    "address":"fce",
+    "city":"lce",
+    "country":"csce",
+    "description":"ccke",
+    "price": 1,
+    "user_id": 1,
+    "image_url": "ncekc"
+}
+
+###
+GET http://{{host}}:{{port}}/user
+    ?username=user1
+    &password=password1
+
+###
+
+POST http://{{host}}:{{port}}/park 
+content-type: application/json
+
+{
+    "username":"user9",
+    "password":"password9",
+    "first_name":"first9",
+    "last_name":"last9",
+    "email":"user9@beeno.com",
+    "phone_number":9999999999
+
+}
+
+###
+
+POST http://{{host}}:{{port}}/book 
+content-type: application/json
+
+{
+    "date":"2023-01-30",
+    "parking_id":1,
+    "user_id":1
+}
+
+
+
+
