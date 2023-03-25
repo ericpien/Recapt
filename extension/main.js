@@ -17,6 +17,7 @@ async function search() {
 }
 
 async function summarize() {
+    console.log("hello I'm here");
     let activeTab = await getActiveTab();
     alert(activeTab.url + " " + "summarize");
 }

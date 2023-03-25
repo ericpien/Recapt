@@ -4,6 +4,19 @@
     "description": "YouTubeGPT Summarizer",
     "version": "0.1",
     "permissions": ["tabs","scripting"],
-    "action": {"default_popup": "popup.html"},
-    "content_scripts": [{"matches": ["https://www.youtube.com/*","http://www.youtube.com/*"], "js": ["main.js"]}]
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.youtube.com/*","http://www.youtube.com/*"], 
+            "js": ["integratedButton.js"]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["main.js"],
+            "matches": ["<all_urls>"]
+        }
+    ]
 }
