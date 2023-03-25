@@ -18,14 +18,21 @@ def get_gpt_response():
         captions = ''
         # get the response
         prompt = get_prompt(search_text, captions)
+        response =''
+        return jsonify(message=response)
 
 
 def get_prompt(search_text, captions):
     if search_text == 'summarize':
-        question = 'Summarize the following captions from a Youtube video.'
+        question = 'Summarize the following captions from a Youtube video: '
+        context = captions
     else:
         question = 'Here is a question that I want you to answer: '
-        question += search_text
+        question += search_text + '. '
+        context = 'Here are the captions for you to use to answer the question, if you are not sure of the answer using these captions say "Sorry, I do not know.": ' + captions
+
+    prompt = question + context
+    return prompt
 
 
 if __name__ == '__main__':
