@@ -1,12 +1,23 @@
 # backend
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, request, jsonify
 app = Flask(__name__)
+
 
 @app.route('/response', methods=['GET'])
 def get_gpt_response():
     if(request.method == 'GET'):
-        data = {"data": "Hello World"}
-        return jsonify(data)
+        args = request.args
+        url = args.get('url', '')
+        search_text = args.get('search_text', '')
+        # handle if the request is missing info
+        if url == '':
+            return jsonify(status="error", message="Sorry, there was a problem retrieving this video's info.")
+        if search_text == '':
+            return jsonify(status="error", message="You must provide a question to get a response.")
+        # get the captions
+
+        # get the response
+
 
 if __name__ == '__main__':
-   app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=8080)
