@@ -4,6 +4,6 @@
     "description": "YouTubeGPT Summarizer",
     "version": "0.1",
     "permissions": ["tabs","scripting"],
-    "content_scripts": [{"matches": ["https://www.youtube.com/*","http://www.youtube.com/*"], "js": ["main.js"]}],
-    "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'self'"}
+    "action": {"default_popup": "popup.html"},
+    "content_scripts": [{"matches": ["https://www.youtube.com/*","http://www.youtube.com/*"], "js": ["main.js"]}]
 }
