@@ -16,6 +16,11 @@
     color: #f2f2f2;
 }
 
+.searchButton:disabled, searchButton[disabled] {
+    background-color: #f2f2f2;
+    color: #f2f2f2;
+}
+
 .inputBox {
     padding: 10px;
     font-size: 150%;
