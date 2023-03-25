@@ -139,7 +139,6 @@ class YouTubeGPTButton {
 function search() {
     document.getElementById("searchButton").disabled = true;
     document.getElementById("summarize").disabled = true;
-    console.log("clicked search button");
 
     resultArea.style.display = "block";
     resultText.textContent = "Searching for an answer to your question...please wait...";
@@ -153,7 +152,6 @@ function search() {
 function summarize() {
     document.getElementById("searchButton").disabled = true;
     document.getElementById("summarize").disabled = true;
-    console.log("clicked summarize button");
 
     resultArea.style.display = "block";
     resultText.textContent = "Summarizing the video...please wait...";
