@@ -24,7 +24,14 @@ def get_gpt_response():
         while prompt != '':
             prompt, captions = get_prompt(search_text, captions)
             responses.append(' ' + ExternalAPIs.getGPT(prompt))
-        response = max(responses, key=len)
+
+        if search_text == 'summarize':
+            response = ' '.join(responses)
+            prompt, captions = get_prompt(
+                'Here is a summary you previously gave me, can you resummarize this to be less repetitive?', response)
+            response = ExternalAPIs.getGPT(prompt)
+        else:
+            response = max(responses, key=len)
         return jsonify(message=response)
 
 
