@@ -19,6 +19,8 @@ def get_gpt_response():
             return jsonify(status="error", message="You must provide a question to get a response.")
         # get the captions
         captions = ExternalAPIs.getCaptions(url)
+        if captions == "Sorry, this video's captions are not available to us.":
+            return jsonify(message=captions)
         # get the response
         prompt, captions = get_prompt(search_text, captions)
         responses = []
