@@ -32,7 +32,7 @@ def get_gpt_response():
         if search_text == 'summarize':
             response = ' '.join(responses)
             prompt, captions = get_prompt(
-                'Here is a summary you previously gave me. Rewrite this in better English for a blog, immediately act as if you were writing a blog. Max word count is 400 words.', response)
+                'Here is a summary you previously gave me. Rewrite this in better English for a video description, immediately act as if you were writing a video description as the content creator. Max word count is 400 words.', response)
             response = ExternalAPIs.getGPT(prompt)
         else:
             response = max(responses, key=len)
@@ -43,12 +43,12 @@ def get_prompt(search_text, captions):
     if captions != '':
         captions_clip = captions[0:9500]
         if search_text == 'summarize':
-            question = 'Summarize the following captions from a Youtube video: '
+            question = 'Summarize the following captions from a Youtube video as if you were the content creator: '
             context = captions_clip
         else:
             question = 'Here is a question that I want you to answer: '
             question += search_text + '. '
-            context = 'Here are the captions for you to use to answer the question, answer in a concise manner and immediately act as if you were writing a blog ' + captions_clip
+            context = 'Here are the captions for you to use to answer the question, answer in a concise manner and immediately act as if you were answering a question about your own video ' + captions_clip
 
         prompt = question + context
 
