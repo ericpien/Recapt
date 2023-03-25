@@ -1,6 +1,11 @@
 import openai
 import os
 from youtube_transcript_api import YouTubeTranscriptApi
+import numpy as np
+import pandas as pd
+import pickle
+import tiktoken
+
 
 
 class ExternalAPIs():
@@ -33,3 +38,4 @@ class ExternalAPIs():
         print(f"ChatGPT: {answer}")
         messages.append({"role": "assistant", "content": answer})
         return answer
+
